@@ -1,48 +1,77 @@
+import java.time.LocalDate;
+
 public class ExecutaApp {
 
     public static void main(String[] args) {
 
         System.out.println("Banco Maut" + "\n");
-        
-        //Conta 1, Cliente 1
-        Conta conta1 = new Conta();
-        conta1.agencia = 1234;
-        conta1.numero = 1234567;
-        conta1.saldo = 0;
 
-        Cliente cliente = new Cliente();
-        cliente.nome = "Edivaldo Macêdo";
-        cliente.CPF = "123.456.789-01";
-        
-        System.out.println("Cliente: " + cliente.nome);
-        System.out.println("CPF: " + cliente.CPF);
-        System.out.println("Agência: " + conta1.agencia);
-        System.out.println("Número da Conta: " + conta1.numero);
-        System.out.println("Saldo: R$" + conta1.saldo + "\n"); 
-        
-        //Conta 2, Cliente 1
-        Conta conta2 = new Conta();
-        conta2.agencia = 1234;
-        conta2.numero = 7891011;
-        conta2.saldo = 5000;
-        
-        System.out.println("Cliente: " + cliente.nome);
-        System.out.println("CPF: " + cliente.CPF);
-        System.out.println("Agência: " + conta2.agencia);
-        System.out.println("Número da Conta: " + conta2.numero);
-        System.out.println("Saldo: R$" + conta2.saldo + "\n");
-        
-        //Conta 3, Cliente 1
-        Conta conta3 = new Conta();
-        conta3.agencia = 1234;
-        conta3.numero = 1220586;
-        conta3.saldo = 25;
-        
-        System.out.println("Cliente: " + cliente.nome);
-        System.out.println("CPF: " + cliente.CPF);
-        System.out.println("Agência: " + conta3.agencia);
-        System.out.println("Número da Conta: " + conta3.numero);
-        System.out.println("Saldo: R$" + conta3.saldo);
+        // Cliente 1 │ Conta 1
+        Cliente cliente = new Cliente("Arlindo Macêdo", "123.456.789-12", LocalDate.of(1945, 2, 8), "Rua Carlos Matos, 12, Santa Fé, Picos - PI");
+        System.out.println(cliente.getNome());
+        System.out.println(cliente.getCPF());
+        System.out.println(cliente.getDataNascimento());
+        System.out.println(cliente.setEndereco());
 
-    } 
+        Conta conta1 = new Conta(5678, 1234567, 7, cliente);
+        System.out.println("Quantidade de contas no Banco Maut: " + conta1.getQuantidadeContas());
+        System.out.println("Agência: " + conta1.getAgencia());
+        System.out.println("Número da Conta: " + conta1.getNumero());
+        System.out.println("Saldo: R$" + conta1.getSaldo());
+
+        // Operações Bancárias Conta 1 │ Cliente 1
+        conta1.deposita(750);
+        System.out.println("Saldo atual da conta: R$" + conta1.getSaldo());
+
+        conta1.saca(800);
+        System.out.println("Saldo atual da conta: R$" + conta1.getSaldo() + "\n");
+
+        
+        
+        
+        // Cliente 2 │ Conta 2
+        Cliente cliente2 = new Cliente("Lorena Ohanna", "101.855.893-45", LocalDate.of(1945, 2, 8), "Rua Epaminondas Silva, 456, Coahb, Goiânia - GO");
+        System.out.println(cliente2.getNome());
+        System.out.println(cliente.getCPF());
+        System.out.println(cliente.getDataNascimento());
+        System.out.println(cliente.setEndereco());
+
+        Conta conta2 = new Conta(1234, 7891011, 5000, cliente2);
+        System.out.println("Quantidade de contas no Banco Maut: " + conta1.getQuantidadeContas());
+        System.out.println("Agência: " + conta2.getAgencia());
+        System.out.println("Número da Conta: " + conta2.getNumero());
+        System.out.println("Saldo: R$" + conta2.getSaldo());
+
+        // Operações Bancárias Conta 2 │ Cliente 2
+        conta2.deposita(200);
+        System.out.println("Saldo atual da conta: R$" + conta2.getSaldo());
+
+        conta2.saca(967);
+        System.out.println("Saldo atual da conta: R$" + conta2.getSaldo());
+
+        conta2.transfere(2000, conta1);
+        System.out.println("Conta de Destino: " + conta1 + "\n");
+        
+
+        
+        
+        // Cliente 2 │ Conta 3
+        System.out.println(cliente2.getNome());
+        System.out.println(cliente2.getCPF());
+        System.out.println(cliente2.getDataNascimento());
+        System.out.println(cliente2.setEndereco());
+
+        Conta conta3 = new Conta(1234, 2021223, 10, cliente2);
+        System.out.println("Quantidade de contas no Banco Maut: " + conta1.getQuantidadeContas());
+        System.out.println("Agência: " + conta3.getAgencia());
+        System.out.println("Número da Conta: " + conta3.getNumero());
+        System.out.println("Saldo: R$" + conta3.getSaldo());
+
+        // Operações Bancárias Conta 3 │ Cliente 2
+        conta3.deposita(2);
+        System.out.println("Saldo atual da conta: R$" + conta3.getSaldo());
+
+        conta3.saca(20);
+        System.out.println("Saldo atual da conta: R$" + conta3.getSaldo() + "\n");
+    }
 }
