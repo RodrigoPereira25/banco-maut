@@ -2,7 +2,7 @@ public class Conta {
 
     private int agencia;
     private int numero;
-    private double saldo;
+    protected double saldo;
     private Cliente nomeCliente;
 
     private static int quantidadeContas;
@@ -23,24 +23,17 @@ public class Conta {
             System.out.println("Depósito realizado com sucesso! Valor do depósito R$:" + valor);
             this.enviaNotificacao("Depósito", valor);
         } else {
-            System.out.println("Não é possível efetuar esta operação! Só é possível depositar valores acima deste valor: R$0.0");
+            System.out.println(
+                    "Não é possível efetuar esta operação! Só é possível depositar valores acima deste valor: R$0.0");
         }
     }
 
     // Método Saca
     public boolean saca(double valor) {
-        if (valor > 0 && valor <= this.saldo) {
-            this.saldo = this.saldo - valor;
-            System.out.println("Saque realizado com sucesso! Valor do saque solicitado R$:" + valor);
-            this.enviaNotificacao("Saque", valor);
-            return true;
-        } else {
-            System.out.println("Você não possui saldo suficente! Valor do saque solicitado: R$" + valor);
-            return false;
-        }
+        return false;
     }
 
-    //Método Transfere
+    // Método Transfere
     public void transfere(double valor, Conta contaDestino) {
         System.out.println("Transferindo valor solicitado...");
         boolean saqueComSucesso = this.saca(valor);
@@ -51,10 +44,10 @@ public class Conta {
     }
 
     // Métodos de Manipulação de atributos
-    private void enviaNotificacao(String operacao, double valor) {
+    protected void enviaNotificacao(String operacao, double valor) {
         new Notificacao().enviaEmail(operacao, valor);
     }
-    
+
     public int getAgencia() {
         return this.agencia;
     }
@@ -74,4 +67,5 @@ public class Conta {
     public int getQuantidadeContas() {
         return quantidadeContas;
     }
+
 }

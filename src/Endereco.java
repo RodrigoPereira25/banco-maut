@@ -4,7 +4,7 @@ public class Endereco {
     private String bairro;
     private String cidade;
     private String uf;
-    
+
     public Endereco(String logradouro, int numero, String bairro, String cidade, String uf) {
         this.logradouro = logradouro;
         this.numero = numero;
@@ -52,4 +52,5 @@ public class Endereco {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
 }
