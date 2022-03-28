@@ -1,1 +1,1 @@
-Sistema de Bancário - Banco Maut
+Sistema Bancário - Banco Maut
