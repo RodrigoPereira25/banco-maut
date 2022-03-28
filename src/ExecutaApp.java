@@ -13,7 +13,6 @@ public class ExecutaApp {
         System.out.println(cliente1.getCPF());
         System.out.println(cliente1.getDataNascimento());
         System.out.println(cliente1.getEnderecos());
-
         Conta cc1 = new ContaCorrente(5678, 1234567, 7, cliente1);
         System.out.println("Quantidade de contas no Banco Maut: " + cc1.getQuantidadeContas());
         System.out.println("Agência: " + cc1.getAgencia());
